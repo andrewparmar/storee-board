@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setup import Restaurant, Base, MenuItem
+from database_setup import Video, Movie, TvShow, Base
 
-engine = create_engine('sqlite:///:memory:', echo=True)
+engine = create_engine('sqlite:///video_database.db', echo=True)
 # Bind the engine to the metadata of the Base class so that the
 # declaratives can be accessed through a DBSession instance
 Base.metadata.bind = engine
@@ -19,69 +19,20 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-# Menu for UrbanBurger
-restaurant1 = Restaurant(name="Urban Burger")
+# Add titles
 
-session.add(restaurant1)
+# movie1 = Movie(title="Vaastav", duration="01:01:01")
+
+# movie2 = Movie(title="Snatch", duration="02:02:02")
+
+movie3 = Movie(title="Ring", duration="01:01:03")
+
+movie4 = Movie(title="Rush", duration="02:02:04")
+
+objects = [movie3, movie4]
+session.bulk_save_objects(objects)
+
+# session.add(movie1, movie2)
 session.commit()
-
-menuItem2 = MenuItem(name="Veggie Burger", description="Juicy grilled veggie patty with tomato mayo and lettuce",
-                     price="$7.50", course="Entree", restaurant=restaurant1)
-
-session.add(menuItem2)
-session.commit()
-
-
-menuItem1 = MenuItem(name="French Fries", description="with garlic and parmesan",
-                     price="$2.99", course="Appetizer", restaurant=restaurant1)
-
-session.add(menuItem1)
-session.commit()
-
-menuItem2 = MenuItem(name="Chicken Burger", description="Juicy grilled chicken patty with tomato mayo and lettuce",
-                     price="$5.50", course="Entree", restaurant=restaurant1)
-
-session.add(menuItem2)
-session.commit()
-
-menuItem3 = MenuItem(name="Chocolate Cake", description="fresh baked and served with ice cream",
-                     price="$3.99", course="Dessert", restaurant=restaurant1)
-
-session.add(menuItem3)
-session.commit()
-
-menuItem4 = MenuItem(name="Sirloin Burger", description="Made with grade A beef",
-                     price="$7.99", course="Entree", restaurant=restaurant1)
-
-session.add(menuItem4)
-session.commit()
-
-menuItem5 = MenuItem(name="Root Beer", description="16oz of refreshing goodness",
-                     price="$1.99", course="Beverage", restaurant=restaurant1)
-
-session.add(menuItem5)
-session.commit()
-
-menuItem6 = MenuItem(name="Iced Tea", description="with Lemon",
-                     price="$.99", course="Beverage", restaurant=restaurant1)
-
-session.add(menuItem6)
-session.commit()
-
-menuItem7 = MenuItem(name="Grilled Cheese Sandwich", description="On texas toast with American Cheese",
-                     price="$3.49", course="Entree", restaurant=restaurant1)
-
-session.add(menuItem7)
-session.commit()
-
-menuItem8 = MenuItem(name="Veggie Burger", description="Made with freshest of ingredients and home grown spices",
-                     price="$5.99", course="Entree", restaurant=restaurant1)
-
-session.add(menuItem8)
-session.commit()
-
-
-
-
 
 print "added menu items!"
