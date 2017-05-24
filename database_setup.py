@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String, Time, Text  # ForeignKey,
+from sqlalchemy import Column, Integer, String, Time, Text, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 
 # import os
@@ -7,33 +7,40 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
-# class Video(Base):
-# 	__tablename__ = 'movie'
+class Video(Base):
+	__tablename__ = 'video'
 
-# 	id= Column(Integer, primary_key=True)
-# 	title = Column(String(250))
-# 	duration = Column(Time)
+	id= Column(Integer, primary_key=True)
+	video_type = Column(String(32), nullable=False)
+	title = Column(String(250))
+	duration = Column(String(30))
+	__mapper_args__ = {'polymorphic_on': video_type}
 
 
-class Movie(Base):
+class Movie(Video):
     __tablename__ = 'movie'
 
-    id = Column(Integer, primary_key=True)
-    title = Column(Text)
-    duration = Column(Time)
-    picture = Column(String(250))
+    id = Column(None, ForeignKey('video.id'), primary_key=True)
+    # id = Column(Integer, primary_key=True)
+    # title = Column(Text)
+    # duration = Column(Time)
+    __mapper_args__ = {'polymorphic_identity':'movie'}
+    year = Column(Integer)
+    poster_mov = Column(String(250))
 
 
-class TvShow(Base):
+class TvShow(Video):
     __tablename__ = 'tv_show'
 
-    id = Column(Integer, primary_key=True)
-    title = Column(Text)
+    id = Column(None, ForeignKey('video.id'), primary_key=True)
+    # id = Column(Integer, primary_key=True)
+    # title = Column(Text)
+    __mapper_args__ = {'polymorphic_identity':'tv_show'}
     season = Column(String(100))
     episode = Column(String(100))
-    duration = Column(Time)
+    poster_tv = Column(String(250))
 
 
-engine = create_engine('sqlite:///:memory:', echo=True)
+engine = create_engine('sqlite:///video_database.db', echo=True)
 
 Base.metadata.create_all(engine)
