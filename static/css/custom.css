@@ -1,5 +1,5 @@
 body {
-    padding-top: 50px;
+    padding-top: 25px;
     /* background-color: #b0c4de;
     background-image: url("cinema.jpg"); */
     /*background-image: url('http://static.tumblr.com/9d0687c9c1d5fbe21ca6451f42051dc6/tqsudhr/QUTn19gtd/tumblr_static_massena01.jpg');*/
@@ -53,8 +53,8 @@ body {
     min-height:50px;
 }
 #logo-height {
-    padding-top: 10px;
-    padding-botton: 10px;
+    padding-top: 7px;
+    padding-bottom: 10px;
 }
 .navbar-brand-height {
     min-height: 31px;
