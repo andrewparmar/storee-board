@@ -93,12 +93,18 @@
         </div><!-- end navbar -->
     </div>
     <div class="container">
-        <div><h1 style="text-align:center;font-family:Pacifico">Freshest Movie Trailers</h1></div>
-        {movie_tiles}
+        <div><h1 style="text-align:center;font-family:Pacifico; margin-bottom:30px;margin-top:30px;">Freshest Movie Trailers</h1></div>
+        <!-- {movie_tiles} -->
+
+        <!-- child template -->
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+
     </div>
 
-    <!-- child template -->
-        {% block content %}{% endblock %}
+    
+        
 
 
 </body>

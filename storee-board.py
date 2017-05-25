@@ -5,11 +5,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Video, Movie, TvShow, Base
 
+from sqlalchemy.orm import with_polymorphic
+
 app = Flask(__name__)
 
 
 # Create session and connect to DB
-engine = create_engine('sqlite:///video_database.db')
+engine = create_engine('sqlite:///video_database.db', echo=True)
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
@@ -23,8 +25,15 @@ def hello_world():
     '''
     # videos = session.query(Video).all()
     # videos = session.query(Video).join(Movie.id)
-    # videos = session.query(Movie).all() + session.query(TvShow).all()
-    videos = session.query(TvShow).all()
+    # videos = session.query(Movie).all() 
+    # videos = session.query(TvShow).order_by(TvShow.id)
+    # videos = session.query(TvShow).all()
+    # for v in videos:
+    # 	print v.title
+
+    all_videos = with_polymorphic(Video, [Movie, TvShow])
+    videos = session.query(all_videos).all()
+
     return render_template('movies.html', videos=videos)
 
 

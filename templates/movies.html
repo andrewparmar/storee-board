@@ -2,14 +2,20 @@
 
 {% block content %}
 
-<h1>Hellow World</h1>
+<!-- <h1>Outside of code</h1> -->
 
 
 {% for video in videos %}
 
-	<h3>{{video.title}}</h3>
+	
+	<div class="col-md-6 col-lg-4 movie-tile text-center">
+		<img src="{{video.poster_mov}}" alt="Poster width="220" height="342"">
 
-	<h3>{{video.id}}</h3>
+		<h3>{{video.title}}</h3>
+
+		<h3>{{video.duration}}</h3>
+	</div>
+	
 
 
 

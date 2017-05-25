@@ -10,9 +10,10 @@ Base = declarative_base()
 class Video(Base):
 	__tablename__ = 'video'
 
-	id= Column(Integer, primary_key=True)
+	id = Column(Integer, primary_key=True)
 	video_type = Column(String(32), nullable=False)
 	title = Column(String(250))
+	description = Column(String(300))
 	duration = Column(String(30))
 	__mapper_args__ = {'polymorphic_on': video_type}
 
@@ -20,10 +21,7 @@ class Video(Base):
 class Movie(Video):
     __tablename__ = 'movie'
 
-    id = Column(None, ForeignKey('video.id'), primary_key=True)
-    # id = Column(Integer, primary_key=True)
-    # title = Column(Text)
-    # duration = Column(Time)
+    id = Column(Integer, ForeignKey('video.id'), primary_key=True)
     __mapper_args__ = {'polymorphic_identity':'movie'}
     year = Column(Integer)
     poster_mov = Column(String(250))
@@ -33,9 +31,7 @@ class Movie(Video):
 class TvShow(Video):
     __tablename__ = 'tv_show'
 
-    id = Column(None, ForeignKey('video.id'), primary_key=True)
-    # id = Column(Integer, primary_key=True)
-    # title = Column(Text)
+    id = Column(Integer, ForeignKey('video.id'), primary_key=True)
     __mapper_args__ = {'polymorphic_identity':'tv_show'}
     season = Column(String(100))
     episode = Column(String(100))
