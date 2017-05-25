@@ -27,6 +27,7 @@ class Movie(Video):
     __mapper_args__ = {'polymorphic_identity':'movie'}
     year = Column(Integer)
     poster_mov = Column(String(250))
+    youtube_trailer = Column(Text)
 
 
 class TvShow(Video):

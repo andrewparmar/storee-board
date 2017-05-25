@@ -27,12 +27,22 @@ session = DBSession()
 
 movie3 = Movie(title="Ring", duration="01:01:03")
 
-movie4 = Movie(title="Rush", duration="02:02:04")
+movie4 = Movie(title="Rush", duration="02:02:04", year="1985", poster_mov="https://images-na.ssl-images-amazon.com/images/M/MV5BOWEwODJmZDItYTNmZC00OGM4LThlNDktOTQzZjIzMGQxODA4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_SX675_AL_.jpg" )
 
-objects = [movie3, movie4]
+tv1 = TvShow(title="breaking bad1", season="1", episode="2", duration="01:01:03")
+
+tv2 = TvShow(title="breaking bad2", season="2", episode="2", duration="01:01:03")
+
+tv3 = TvShow(title="breaking bad3", season="3", episode="2", duration="01:01:03")
+
+objects = [movie3, movie4, tv1, tv2, tv3]
 session.bulk_save_objects(objects)
 
 # session.add(movie1, movie2)
 session.commit()
 
 print "added menu items!"
+
+
+# TODO
+# 1. Add youtube link
