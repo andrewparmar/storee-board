@@ -60,6 +60,5 @@ if __name__ == '__main__':
 # TODO
 
 # make movies.html replicat the view from movie trailer proj
-
-# session.query(MenuItem).join(MenuItem.restaurant).filter(
-#             Restaurant.id == restaurant_id).order_by(MenuItem.course)
+# create search?
+# allow adding new items
