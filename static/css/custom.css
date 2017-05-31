@@ -1,5 +1,5 @@
 body {
-    padding-top: 25px;
+    /*padding-top: 25px;*/
     /* background-color: #b0c4de;
     background-image: url("cinema.jpg"); */
     /*background-image: url('http://static.tumblr.com/9d0687c9c1d5fbe21ca6451f42051dc6/tqsudhr/QUTn19gtd/tumblr_static_massena01.jpg');*/
@@ -41,7 +41,7 @@ body {
 }
 .scale-media iframe {
     /* border: none; */
-    border: 5px solid #303030;
+    /*border: 5px solid #303030;*/  
     height: 100%;
     position: absolute;
     width: 100%;
@@ -72,4 +72,11 @@ body {
 }
 .navbar-inner{
     text-align:center;
+}
+.tag-line {
+    margin-top: 80px; 
+    text-align:center;
+    font-family:Pacifico;
+    margin-bottom:30px;
+     
 }
