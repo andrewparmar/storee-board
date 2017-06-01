@@ -1,13 +1,13 @@
 body {
     /*padding-top: 25px;*/
-    /* background-color: #b0c4de;
-    background-image: url("cinema.jpg"); */
+    background-color: rgb(234,182,40);  
+    /* background-image: url("cinema.jpg"); */
     /*background-image: url('http://static.tumblr.com/9d0687c9c1d5fbe21ca6451f42051dc6/tqsudhr/QUTn19gtd/tumblr_static_massena01.jpg');*/
     /*background-image: url('http://wallpoper.com/images/00/43/29/02/film-camera_00432902.jpg');*/
-    /*background-image: url("images/cinema-minimalist.jpg");*/
-    background-image: url("images/film-camera.jpg");
+    /*background-image: url("../../../../static/images/cinema-minimalist.jpg");
+    background-image: url("../../../../static/images/film-camera.jpg");*/
     background-attachment: fixed;
-    /* background-size: 100% 100%; */
+    background-size: 100% 100%; 
 }
 #trailer .modal-dialog {
     margin-top: 200px;
